@@ -26,7 +26,7 @@ For Each ws In Worksheets
     
     
     
-    'Determine last row
+    'Determine last row of the data
     Last_Row = ws.Cells(Rows.Count, 1).End(xlUp).Row
     
     'Set the row for 2 for the table
@@ -53,6 +53,7 @@ For Each ws In Worksheets
     ws.Cells(2, 15).Font.Bold = True
     ws.Cells(3, 15).Font.Bold = True
     ws.Cells(4, 15).Font.Bold = True
+
     'Adding a bottom boarder
     ws.Cells(1, 9).Borders(xlEdgeBottom).LineStyle = xlContinuous
     ws.Cells(1, 10).Borders(xlEdgeBottom).LineStyle = xlContinuous
@@ -122,6 +123,8 @@ For Each ws In Worksheets
     'Determine last row of the table
     Last_Row_Table = ws.Cells(Rows.Count, 9).End(xlUp).Row
     
+    'Building the table for Hard section of the problem
+    'Getting the % Increse and % Decrease
     For i = 2 To Last_Row_Table
         If ws.Cells(i, 11).Value > MaxSoFar Then
             MaxSoFar = ws.Cells(i, 11).Value
@@ -133,7 +136,7 @@ For Each ws In Worksheets
         End If
     Next i
     
-    'Getting the Ticker symbol for Max Volume
+    'Getting the Ticker symbol and the value for Max Volume
     For i = 2 To Last_Row_Table
         If ws.Cells(i, 12).Value > MaxVolTotSoFar Then
             MaxVolTotSoFar = ws.Cells(i, 12).Value
